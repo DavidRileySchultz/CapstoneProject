@@ -29,6 +29,19 @@ namespace CapstoneProject.Data
                 .HasOne(gt => gt.Traveller)
                 .WithMany(t => t.GroupTravellers)
                 .HasForeignKey(gt => gt.TravellerId);
+
+            modelBuilder.Entity<TravellerJournal>()
+                .HasKey(tj => new { tj.TravellerId, tj.JournalId });
+
+            modelBuilder.Entity<TravellerJournal>()
+                .HasOne(tj => tj.Traveller)
+                .WithMany(t => t.TravellerJournals)
+                .HasForeignKey(t => t.TravellerId);
+
+            modelBuilder.Entity<TravellerJournal>()
+                .HasOne(tj => tj.Journal)
+                .WithMany(j => j.TravellerJournals)
+                .HasForeignKey(tj => tj.JournalId);
         }
 
 
@@ -36,5 +49,6 @@ namespace CapstoneProject.Data
         public DbSet<Group> Groups { get; set; }
         public DbSet<GroupTraveller> GroupTravellers { get; set; }
         public DbSet<Journal> Journals { get; set; }
+        public DbSet<TravellerJournal> TravellerJournals { get; set; }
     }
 }

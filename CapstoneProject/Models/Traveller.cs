@@ -16,5 +16,6 @@ namespace CapstoneProject.Models
         public string Password { get; set; }
 
         public ICollection<GroupTraveller> GroupTravellers { get; set; }
+        public ICollection<TravellerJournal> TravellerJournals { get; set; }
     }
 }
