@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace CapstoneProject.Models
 {
-    public class Group
+    public class GroupMember
     {
         [Key]
         public int Id { get; set; }
-        [Display(Name = "Group Author")]
-        public string Name { get; set; }
-        public string GroupName { get; set; }
+
+        [ForeignKey("Group")]
+        public int GroupId { get; set; }
+        public Group Group { get; set; }
 
         [ForeignKey("Traveller")]
         public int TravellerId { get; set; }

@@ -42,7 +42,7 @@ export class Logout extends Component {
                         <Modal.Body>Are you sure you want to log out?</Modal.Body>
                         <Modal.Footer>
                             <Button onClick={(event) => this.BackToSafety(event)}>Back</Button>
-                            <Button bsStyle="primary" onClick={(event) => this.LogOutAction(event)}>Log me out</Button>
+                            <Button bsStyle="primary" onClick={(event) => this.LogOutAction(event)}>Logout</Button>
                         </Modal.Footer>
                     </Modal.Dialog>
                 </div>

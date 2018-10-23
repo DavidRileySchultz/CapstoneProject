@@ -23,5 +23,6 @@ namespace CapstoneProject.Data
 
         public DbSet<Traveller> Travellers { get; set; }
         public DbSet<Group> Groups { get; set; }
+        public DbSet<GroupMember> GroupMembers { get; set; }
     }
 }
