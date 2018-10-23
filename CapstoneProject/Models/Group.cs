@@ -15,8 +15,6 @@ namespace CapstoneProject.Models
         public string Name { get; set; }
         public string GroupName { get; set; }
 
-        [ForeignKey("Traveller")]
-        public int TravellerId { get; set; }
-        public Traveller Traveller { get; set; }
+        public ICollection<GroupTraveller> GroupTravellers { get; set; }
     }
 }

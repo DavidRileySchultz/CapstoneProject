@@ -8,6 +8,20 @@ namespace CapstoneProject.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Groups",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    GroupName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Groups", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Travellers",
                 columns: table => new
                 {
@@ -24,20 +38,23 @@ namespace CapstoneProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Groups",
+                name: "GroupTravellers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    GroupName = table.Column<string>(nullable: true),
-                    TravellerId = table.Column<int>(nullable: false)
+                    TravellerId = table.Column<int>(nullable: false),
+                    GroupId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Groups", x => x.Id);
+                    table.PrimaryKey("PK_GroupTravellers", x => new { x.GroupId, x.TravellerId });
                     table.ForeignKey(
-                        name: "FK_Groups_Travellers_TravellerId",
+                        name: "FK_GroupTravellers_Groups_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "Groups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_GroupTravellers_Travellers_TravellerId",
                         column: x => x.TravellerId,
                         principalTable: "Travellers",
                         principalColumn: "Id",
@@ -45,13 +62,16 @@ namespace CapstoneProject.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Groups_TravellerId",
-                table: "Groups",
+                name: "IX_GroupTravellers_TravellerId",
+                table: "GroupTravellers",
                 column: "TravellerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "GroupTravellers");
+
             migrationBuilder.DropTable(
                 name: "Groups");
 

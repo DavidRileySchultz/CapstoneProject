@@ -15,14 +15,25 @@ namespace CapstoneProject.Data
             : base(options)
         {
         }
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(builder);
+            modelBuilder.Entity<GroupTraveller>()
+                .HasKey(gt => new { gt.GroupId, gt.TravellerId });
+
+            modelBuilder.Entity<GroupTraveller>()
+                .HasOne(gt => gt.Group)
+                .WithMany(g => g.GroupTravellers)
+                .HasForeignKey(gt => gt.GroupId);
+
+            modelBuilder.Entity<GroupTraveller>()
+                .HasOne(gt => gt.Traveller)
+                .WithMany(t => t.GroupTravellers)
+                .HasForeignKey(gt => gt.TravellerId);
         }
 
 
         public DbSet<Traveller> Travellers { get; set; }
         public DbSet<Group> Groups { get; set; }
-        public DbSet<GroupMember> GroupMembers { get; set; }
+        public DbSet<GroupTraveller> GroupTravellers { get; set; }
     }
 }

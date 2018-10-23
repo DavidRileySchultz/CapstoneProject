@@ -28,32 +28,22 @@ namespace CapstoneProject.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("TravellerId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TravellerId");
 
                     b.ToTable("Groups");
                 });
 
-            modelBuilder.Entity("CapstoneProject.Models.GroupMember", b =>
+            modelBuilder.Entity("CapstoneProject.Models.GroupTraveller", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<int>("GroupId");
 
                     b.Property<int>("TravellerId");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("GroupId");
+                    b.HasKey("GroupId", "TravellerId");
 
                     b.HasIndex("TravellerId");
 
-                    b.ToTable("GroupMembers");
+                    b.ToTable("GroupTravellers");
                 });
 
             modelBuilder.Entity("CapstoneProject.Models.Traveller", b =>
@@ -75,23 +65,15 @@ namespace CapstoneProject.Migrations
                     b.ToTable("Travellers");
                 });
 
-            modelBuilder.Entity("CapstoneProject.Models.Group", b =>
-                {
-                    b.HasOne("CapstoneProject.Models.Traveller", "Traveller")
-                        .WithMany()
-                        .HasForeignKey("TravellerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CapstoneProject.Models.GroupMember", b =>
+            modelBuilder.Entity("CapstoneProject.Models.GroupTraveller", b =>
                 {
                     b.HasOne("CapstoneProject.Models.Group", "Group")
-                        .WithMany()
+                        .WithMany("GroupTravellers")
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("CapstoneProject.Models.Traveller", "Traveller")
-                        .WithMany()
+                        .WithMany("GroupTravellers")
                         .HasForeignKey("TravellerId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
