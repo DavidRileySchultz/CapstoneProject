@@ -35,5 +35,6 @@ namespace CapstoneProject.Data
         public DbSet<Traveller> Travellers { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<GroupTraveller> GroupTravellers { get; set; }
+        public DbSet<Journal> Journals { get; set; }
     }
 }
