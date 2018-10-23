@@ -1,0 +1,579 @@
+﻿
+
+/* Highlighting rules for nav menu items */
+
+.navbar .navbar-nav .active a:focus,
+.navbar .navbar-nav .active a {
+    border-bottom: 5px solid purple;
+    background-color: white;
+    background-image: none;
+    color: purple;
+    background-repeat: no-repeat;
+    box-shadow: none;
+}
+
+a {
+    color: #c2e6ff;
+}
+
+.gm-style:first-of-type > div:nth-child(1) {
+    cursor: crosshair !important;
+}
+
+a:hover {
+    color: hotpink;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    background-color: white;
+    background-image: none;
+    color: purple;
+}
+
+.corner-nav-buttons:hover {
+    background-color: purple;
+    background-image: none;
+    color: white;
+}
+
+.navbar-fixed-top {
+    border-bottom-width: 0px;
+}
+
+.navbar-collapse collapse {
+    background-color: white;
+}
+
+.container-fluid {
+    background-color: white;
+}
+
+.navbar-default .navbar-collapse {
+    background-color: white;
+}
+
+.navbar .navbar-default .navbar-fixed-top {
+    background-color: white;
+}
+
+.navbar {
+    margin-bottom: 0px;
+    border-color: white;
+}
+
+.navbar-default {
+    background-image: none;
+    background-color: white;
+}
+
+.brand {
+    cursor: pointer;
+}
+
+.navbar-default {
+    box-shadow: none;
+    background-color: white;
+    height: 9%;
+    padding-right: 15px;
+}
+
+.background-image {
+    width: 90%;
+    height: 90%
+}
+
+.navbar-default .navbar-brand {
+    color: purple;
+}
+
+    .navbar-default .navbar-brand:hover {
+        color: purple;
+        background-color: none;
+    }
+
+.navbar-default .navbar-nav > li > a {
+    color: purple;
+    font-weight: 600;
+}
+
+
+
+.navbar-nav > li > a {
+    text-shadow: none;
+}
+
+.navbar-brand {
+    text-shadow: none;
+    color: purple;
+    font-weight: 600;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.list-group-item:last-child {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+button.list-group-item:hover {
+    background-color: #c2e6ff;
+}
+
+.list-group-item {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn-group-vertical > .btn {
+    margin-bottom: 10px;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+    background-color: #c2e6ff;
+    background-image: none;
+    text-shadow: none;
+    border: none;
+    color: #555;
+}
+
+.smaller-action-buttons:hover,
+.distance-buttons:hover,
+.hill-buttons:hover,
+.distance-buttons.active,
+.hill-buttons.active,
+.distance-buttons.active:hover,
+.hill-buttons.active:hover,
+.distance-buttons.active:focus,
+.hill-buttons.active:focus,
+.btn-group-vertical > .btn.active,
+.btn-group-vertical > .btn:first-child:not(:last-child).active,
+.btn-group-vertical > .btn:not(:first-child):not(:last-child).active,
+.btn-group-vertical > .btn:last-child:not(:first-child).active,
+.btn-group-vertical > .btn.active:hover,
+.btn-group-vertical > .btn:first-child:not(:last-child).active:hover,
+.btn-group-vertical > .btn:not(:first-child):not(:last-child).active:hover,
+.btn-group-vertical > .btn:last-child:not(:first-child).active:hover,
+.btn-group-vertical > .btn.active:focus,
+.btn-group-vertical > .btn:first-child:not(:last-child).active:focus,
+.btn-group-vertical > .btn:not(:first-child):not(:last-child).active:focus,
+.btn-group-vertical > .btn:last-child:not(:first-child).active:focus {
+    background-image: linear-gradient(to left, orange, hotpink);
+    background-color: hotpink;
+    padding: 6px 9px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+
+.btn-group-vertical > .btn,
+.btn-group-vertical > .btn:first-child:not(:last-child),
+.btn-group-vertical > .btn:not(:first-child):not(:last-child),
+.btn-group-vertical > .btn:last-child:not(:first-child),
+.smaller-action-buttons {
+    border-radius: 15px;
+    padding: 3px 6px;
+    background-image: none;
+    background-color: purple;
+    border: 3px solid hotpink;
+    color: white;
+    text-shadow: none;
+}
+
+.btn-default.active {
+    background-image: linear-gradient(to bottom right, orange, hotpink);
+    border: none;
+}
+
+    .btn-default.active,
+    .btn-default.active:focus {
+        background-color: hotpink;
+        box-shadow: none;
+        color: white;
+        padding: 6px 9px;
+    }
+
+.btn-default:hover {
+    background-color: hotpink;
+    box-shadow: none;
+    color: white;
+    padding: 4px 7px;
+    border-color: hotpink;
+}
+
+.btn-default.active:hover {
+    background-color: hotpink;
+    box-shadow: none;
+    color: white;
+    padding: 6px 9px;
+    border-color: hotpink;
+}
+
+.btn .btn-primary .active {
+    background-image: linear-gradient(to bottom right, orange, hotpink) !important;
+}
+
+.normal-buttons {
+    text-shadow: none;
+    background-color: purple;
+    color: white;
+    border: 2px solid hotpink;
+    padding: 4px 7px;
+}
+
+
+
+
+.distance-buttons:hover, .hill-buttons:hover, .distance-buttons.active, .hill-buttons.active, .distance-buttons.active:focus,
+.hill-buttons.active:focus {
+    padding: 3px 5px;
+}
+
+
+.app {
+    background-color: white;
+    color: black;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    overflow-y: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-control {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.page-title {
+    color: white;
+    font-size: 42px;
+}
+
+.page-subtitle {
+    color: white;
+}
+
+.empty-space2percent {
+    height: 2%;
+}
+
+
+.body-content {
+    position: absolute;
+    top: 10%;
+    left: 15px;
+    right: 15px;
+    bottom: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+}
+
+.corner-nav-buttons {
+    background-image: linear-gradient(to top right, orange, hotpink);
+    border-radius: 15px;
+    padding: 5px 10px 5px 10px;
+    color: white;
+}
+
+.distance-buttons {
+    font-size: 90%;
+    padding: 2px 4px;
+    border-radius: 0px;
+    border-radius: 15px;
+    background-image: none;
+    background-color: purple;
+    border: 1px solid hotpink;
+    color: white;
+    text-shadow: none;
+}
+
+.hill-buttons {
+    font-size: 90%;
+    padding: 2px 4px;
+    border-radius: 0px;
+    border-radius: 15px;
+    background-image: none;
+    background-color: purple;
+    border: 1px solid hotpink;
+    color: white;
+    text-shadow: none;
+}
+
+.control-label {
+    color: white;
+}
+
+.action-button {
+    width: 100%;
+    background-image: linear-gradient(to top right, orange, hotpink);
+    color: white;
+}
+
+    .action-button:hover {
+        background-image: none;
+        background-color: purple;
+        padding: 3px 9px;
+        border: 3px solid hotpink;
+        color: white;
+    }
+
+.text-muted {
+    color: #D9EDF7;
+}
+
+.btn.btn-primary {
+    background-image: none;
+    background-color: purple;
+    border: 1px solid hotpink;
+    color: white;
+}
+
+.empty-space10percent {
+    height: 10%;
+}
+
+.empty-space5percent {
+    height: 5%;
+}
+
+.alert-info {
+    background-image: none;
+    background-color: #c2e6ff;
+}
+
+.alert {
+    text-align: center;
+    text-shadow: none;
+    box-shadow: none;
+    border-radius: 3px;
+    border: none;
+    height: 90%;
+    max-height: 50px;
+}
+
+.dismissable-item {
+    background-image: none;
+    background-color: white;
+    color: #555;
+    border-radius: 0px;
+    margin-bottom: 0px;
+}
+
+.button-group {
+    margin-top: 10px;
+}
+
+.well {
+    background-image: none;
+    background-color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-right: 30px;
+    padding: 6px 12px;
+    border: none;
+}
+
+.map-info {
+    margin-top: 20px;
+}
+
+.comment-icon {
+    font-size: 30px;
+    color: hotpink;
+}
+
+.comment-icon-active {
+    font-size: 30px;
+    color: orange;
+}
+
+.btn-default {
+    box-shadow: none;
+    background-image: none;
+}
+
+.btn {
+    border-radius: 3px;
+}
+
+.map-action-buttons {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.map {
+    height: 78vh;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.map-buttons {
+    margin-top: 20px;
+}
+
+.minus-icon {
+    color: hotpink !important;
+    font-size: 30px;
+    left: 80%;
+}
+
+.btn-toolbar > .btn {
+    margin-bottom: 3px;
+}
+
+.modal {
+    height: 600px;
+}
+
+.modal-form-custom {
+    width: 40%;
+    color: #555;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+}
+
+.modal-body {
+    background-color: #c2e6ff;
+}
+
+.modal-footer {
+    background-color: #c2e6ff;
+}
+
+.custom-map {
+    height: 77vh;
+    margin-top: -30px;
+    margin-bottom: -10px;
+    width: 65%;
+}
+
+.custom-map2 {
+    height: 68vh;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    width: 65%;
+}
+
+.under-map {
+    margin-top: 8px;
+}
+
+.under-map2 {
+    margin-top: -20px;
+}
+
+.map-back {
+    margin-top: 70px;
+}
+
+.map-back2 {
+    margin-top: 75vh;
+    width: 80%;
+}
+
+
+.comments {
+    padding-bottom: 100px;
+    margin-left: -30px;
+    margin-right: -30px;
+    padding-left: 10px;
+    text-align: left;
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.41);
+    color: #555;
+    z-index: 100;
+}
+
+.custom-comment {
+    margin-top: 20px;
+    padding-bottom: 100px;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: 10px;
+    text-align: left;
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.41);
+    color: #555;
+    z-index: 100;
+}
+
+.table {
+    color: white;
+}
+
+tr:hover {
+    background-color: #c2e6ff;
+    background-image: none;
+    color: #555;
+}
+
+input, input:focus {
+    border: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list {
+    padding-left: 5px !important;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #c2e6ff;
+    background-image: none;
+    color: #555;
+}
+
+.react-datepicker__day--selected {
+    background-color: purple !important;
+}
+
+.bottom-buttons {
+    position: absolute;
+    top: 20vh;
+}
+
+
+
+
+.react-datepicker {
+    border: 1px solid hotpink !important;
+}
+
+.react-datepicker-wrapper {
+    display: block !important;
+}
+
+.react-datepicker__header {
+    background-image: linear-gradient(to bottom right, orange, hotpink) !important;
+    border-bottom: none !important;
+}
+
+.react-datepicker__navigation--previous {
+    border-right-color: purple !important;
+}
+
+.react-datepicker__navigation--next {
+    border-left-color: purple !important;
+}
+
+
+
+.react-datepicker__input-container {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.modal-btn {
+    width: 30%;
+}

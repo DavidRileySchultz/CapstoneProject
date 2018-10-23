@@ -1,52 +1,43 @@
 ﻿import React, { Component } from 'react';
-import { Button, Form, FormGroup, FormControl, ControlLabel, Col, Row, Alert, Modal } from 'react-bootstrap';
-import { Route, withRouter, Redirect } from 'react-router-dom';
+import { Button, Modal } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 
 export class Logout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isGoingBack: false,
             isLoggingOut: false
         }
-        this.BackToSafety = this.BackToSafety.bind(this);
         this.LogOutAction = this.LogOutAction.bind(this);
     }
 
-    LogOutAction(event) {
+    async LogOutAction(event) {
         event.preventDefault();
         localStorage.clear();
-        this.setState({
+        await this.setState({
             isLoggingOut: true
         });
-    }
-
-    BackToSafety(event) {
-        event.preventDefault();
-        this.setState({
-            isGoingBack: true
-        })
+        this.props.clickLogOut();
     }
 
     render() {
         if (this.state.isLoggingOut === true) {
-            return (<div><Redirect to={`/home`} /></div>);
+            return <Redirect to="/home" />
         }
-        else if (this.state.isGoingBack === true) {
-            return (<div><Redirect to={`/users`} /> </div>);
+        const style = {
+            color: "#555"
         }
-        else {
-            return (
-                <div className="static-modal">
-                    <Modal.Dialog>
-                        <Modal.Body>Are you sure you want to log out?</Modal.Body>
-                        <Modal.Footer>
-                            <Button onClick={(event) => this.BackToSafety(event)}>Back</Button>
-                            <Button bsStyle="primary" onClick={(event) => this.LogOutAction(event)}>Logout</Button>
-                        </Modal.Footer>
-                    </Modal.Dialog>
-                </div>
-            );
-        }
+        return (
+            <div className="static-modal">
+                <Modal.Dialog>
+                    <Modal.Body style={style}>Are you sure you want to log out?</Modal.Body>
+                    <Modal.Footer>
+                        <a className="btn normal-buttons" onClick={this.props.cancel}>Back</a>
+                        <a className="btn action-button modal-btn" onClick={(event) => this.LogOutAction(event)}>Log me out</a>
+                    </Modal.Footer>
+                </Modal.Dialog>
+            </div>
+        );
     }
+
 }

@@ -66,10 +66,25 @@ namespace CapstoneProject.Controllers
             }
         }
 
+        private LoggedInTravellerViewModel GetUserInfoFromUser(Traveller traveller)
+        {
+            LoggedInTravellerViewModel viewModel = new LoggedInTravellerViewModel();
+            viewModel.first_name = traveller.FirstName;
+            viewModel.last_name = traveller.LastName;
+            viewModel.Id = traveller.Id;
+            return viewModel;
+        }
+
+        private LoggedInTravellerViewModel GetUserInfoFromEmail(string email)
+        {
+            var user = _context.Travellers.FirstOrDefault(e => e.Email == email);
+            return GetUserInfoFromUser(user);
+        }
+
         // POST: api/Users
         [HttpPost("[action]")]
 
-        public IActionResult Create([FromBody] TravellerViewModel data)
+        public async Task<IActionResult> Create([FromBody] TravellerViewModel data)
         {
             if (data != null)
             {
@@ -82,15 +97,13 @@ namespace CapstoneProject.Controllers
                     else
                     {
                         Traveller traveller = new Traveller();
-                        traveller.FirstName = data.first_name;
-                        traveller.LastName = data.last_name;
+                        traveller.FirstName = data.first_name.Trim();
+                        traveller.LastName = data.last_name.Trim();
                         traveller.Password = data.password;
-                        traveller.Email = data.email;
+                        traveller.Email = data.email.Trim();
                         _context.Travellers.Add(traveller);
-                        _context.SaveChangesAsync();
-                        LoggedInTravellerViewModel viewModel = new LoggedInTravellerViewModel();
-                        viewModel.first_name = traveller.FirstName;
-                        viewModel.last_name = traveller.LastName;
+                        await _context.SaveChangesAsync();
+                        LoggedInTravellerViewModel viewModel = GetUserInfoFromEmail(data.email);
                         return Ok(viewModel);
                     }
                 }

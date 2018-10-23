@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
-import { Button, Form, FormGroup, FormControl, ControlLabel, Col, Row, Alert } from 'react-bootstrap';
+import { Form, FormGroup, FormControl, Col, Row, Alert } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 
 
 export class Login extends Component {
@@ -8,12 +9,12 @@ export class Login extends Component {
         this.state = {
             email: '',
             password: '',
-            errorMessage: ''
+            errorMessage: '',
+            isSuccessful: false,
+            id: null
         }
-
         this.handleChange = this.handleChange.bind(this);
-        this.handleRedirect = this.handleRedirect.bind(this);
-
+        this.handleResponse = this.handleResponse.bind(this);
     }
 
     handleChange(event) {
@@ -25,35 +26,41 @@ export class Login extends Component {
         });
     }
 
-    checkIfCanSubmit() {
-        return this.state.email !== '' && this.state.password !== '';
-    }
 
-    handleSubmit(event) {
-        const data = { email: this.state.email, password: this.state.password };
+    async handleSubmit(event) {
+        const data = {
+            email: this.state.email,
+            password: this.state.password
+        };
         event.preventDefault();
-
-        fetch('api/Users/Login', {
+        var resultData = null;
+        await fetch('api/Users/Login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
-        }).then(this.handleRedirect).then(function (response) { return response.json(); }).then(function (jsonData) { return console.log(jsonData); }).catch(function (error) { console.log(error); });
+        }).then(this.handleResponse).then(function (response) { return response.json(); }).then(function (jsonData) {
+            return resultData = jsonData;
+        }).catch(function (error) { console.log(error); });
+        if (resultData !== null) {
 
-
+            this.setState({ id: resultData.id });
+            localStorage.clear();
+            localStorage.setItem('userId', resultData.id);
+            localStorage.setItem('firstname', resultData.first_name);
+            localStorage.setItem('lastname', resultData.last_name);
+            this.props.loggedIn();
+        }
     }
 
     shouldShowErrorMessage() {
         return this.state.errorMessage !== '';
     }
 
-
-
-
-    handleRedirect(response) {
+    handleResponse(response) {
         var errorText = '';
         if (response.status === 200) {
             console.log("Successful");
-            this.setState({ errorMessage: errorText });
+            this.setState({ errorMessage: errorText, isSuccessful: true });
             return response;
         }
         else if (response.status === 401) {
@@ -71,50 +78,69 @@ export class Login extends Component {
         this.setState({ errorMessage: errorText }
         )
         throw Error(errorText);
-
     }
 
 
     render() {
+        const style = {
+            backgroundColor: "orange",
+            height: "100vh",
+            width: "100%"
+        };
+        if (this.state.id != null) {
+            return <Redirect to="/routes" />
+        }
         return (
-            <div>
-                <h1> Log in </h1>
-                <Row>
-                    <Col md={4}>
+            <div style={style}>
+
+                <Row className="empty-space10percent">
+
+                </Row>
+                <Row className="empty-space10percent">
+                </Row>
+
+
+                <Row className="empty-space10percent">
+                    <Col md={4} mdOffset={4} className="text-center">
+                        <h1 className="page-title"> Log in </h1> </Col>
+                </Row>
+                <Row className="empty-space10percent">
+                    <Col md={4} mdOffset={4}>
                         <div hidden={!this.shouldShowErrorMessage()}>
                             <Alert>{this.state.errorMessage}</Alert>
                         </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={4} mdOffset={4}>
+
+
                         <Form>
-
-
                             <FormGroup>
-                                <ControlLabel>Email Address</ControlLabel>
+
                                 <FormControl
                                     type="text"
                                     name="email"
+                                    placeholder="Email Address"
                                     value={this.state.email}
                                     onChange={this.handleChange} />
-
-
-
                             </FormGroup>
                             <FormGroup>
-                                <ControlLabel>Password</ControlLabel>
+
                                 <FormControl
+                                    placeholder="Password"
                                     type="password"
                                     name="password"
                                     value={this.state.password}
                                     onChange={this.handleChange}
-
                                 />
-
-
                             </FormGroup>
-                            <Button disabled={!this.checkIfCanSubmit()} className="btn btn-primary" onClick={(event) => this.handleSubmit(event)}>Submit</Button>
+                            <a className="btn action-button" onClick={(event) => this.handleSubmit(event)}>Submit</a>
                         </Form>
                     </Col>
+
                 </Row>
             </div>
-        )
+        );
     }
 }

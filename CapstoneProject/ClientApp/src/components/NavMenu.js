@@ -1,41 +1,70 @@
 ﻿import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Glyphicon, Nav, Navbar, NavItem } from 'react-bootstrap';
+import { Nav, Navbar, NavItem, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import './NavMenu.css';
+import './MainStyles.css';
 
 export class NavMenu extends Component {
-  displayName = NavMenu.name
+    displayName = NavMenu.name
 
-  render() {
-    return (
-      <Navbar inverse fixedTop fluid collapseOnSelect>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <Link to={'/'}>CapstoneProject</Link>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav>
-            <LinkContainer to={'/'} exact>
-              <NavItem>
-                <Glyphicon glyph='home' /> Home
-              </NavItem>
-            </LinkContainer>
-            <LinkContainer to={'/register'}>
-              <NavItem>
-                <Glyphicon glyph='Register' /> Register
-              </NavItem>
-            </LinkContainer>
-            <LinkContainer to={'/login'}>
-              <NavItem>
-                <Glyphicon glyph='th-list' /> Login
-              </NavItem>
-            </LinkContainer>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-    );
-  }
+    render()
+    {
+        if (!this.props.isLoggedIn) {
+            return (
+                <Navbar fixedTop fluid collapseOnSelect>
+                    <Navbar.Header>
+                        <Navbar.Brand>
+                            <div className="brand" onClick={this.props.onClickingTab}>CapstoneProject</div>
+                        </Navbar.Brand>
+                        <Navbar.Toggle />
+                    </Navbar.Header>
+                    <Navbar.Collapse>
+                        <Nav pullRight>
+                            <NavItem>
+                                <div className="corner-nav-buttons" onClick={this.props.onClickingLogin}>
+                                    LOG IN
+                                </div>
+                            </NavItem>
+                            <NavItem onClick={this.props.onClickingRegister} >
+                                <div className="corner-nav-buttons">
+                                    SIGN UP </div>
+                            </NavItem>
+
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
+            );
+        }
+        else {
+            return (
+                <Navbar fixedTop fluid collapseOnSelect>
+                    <Navbar.Header>
+                        <Navbar.Brand >
+                            CapstoneProject
+                        </Navbar.Brand>
+                        <Navbar.Toggle />
+                    </Navbar.Header>
+                    <Navbar.Collapse>
+                        <Nav>
+                            <LinkContainer to='/travellers'>
+                                <NavItem>
+                                    HOME
+                                </NavItem>
+                            </LinkContainer>
+                            <LinkContainer to='/groups'>
+                                <NavItem >
+                                    GROUPS
+                                </NavItem>
+                            </LinkContainer>
+                        </Nav>
+                        <Nav pullRight>
+                            <NavItem onClick={this.props.tryLogout} >
+                                <div className="corner-nav-buttons">LOG OUT</div>
+                            </NavItem>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
+            );
+        }
+    }
 }
