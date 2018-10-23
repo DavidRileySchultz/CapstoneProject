@@ -12,10 +12,7 @@ export class CreateGroup extends Component {
         super(props);
         this.state = {
             name: '',
-            city: '',
-            state: '',
-            states: [],
-            description: '',
+            groupName: '',
             members: [],
             membersToAdd: []
         }

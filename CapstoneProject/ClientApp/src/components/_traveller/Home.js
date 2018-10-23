@@ -45,13 +45,6 @@ export class Home extends Component {
         });
     }
 
-    goToEvents(event) {
-        event.preventDefault();
-        this.setState({
-            shouldGoTo: 'Events'
-        })
-    }
-
     render() {
         const goToPage = this.state.shouldGoTo;
         let content;
@@ -61,17 +54,12 @@ export class Home extends Component {
         else if (goToPage === 'Groups') {
             content = <UserGroupContent />
         }
-        else if (goToPage === 'Events') {
-            content = <UserEventContent />
-        }
         return (
             <div>
                 <div className="button-group">
                     <ButtonGroup>
                         <Button onClick={(event) => this.goToHome(event)}>Home</Button>
                         <Button onClick={(event) => this.goToGroups(event)}>Groups</Button>
-                        <Button onClick={(event) => this.goToRoutes(event)}>Routes</Button>
-                        <Button onClick={(event) => this.goToEvents(event)}>Events</Button>
                     </ButtonGroup>
                 </div>
                 <div>
