@@ -110,7 +110,7 @@ export class CreateGroup extends Component {
                 <Row className="empty-space2percent" />
                 <Row>
                     <Col md={2} mdOffset={1}>
-                        <h1 className="page-subtitle"> Create a Group to Adventure! </h1>
+                        <h1 className="page-subtitle"> Create a Group to Adventure With! </h1>
                     </Col>
                 </Row>
                 <Row>

@@ -31,7 +31,7 @@ export class SearchMembers extends Component {
         return (
             <FormGroup>
                 <FormControl
-                    placeholder="Search for members to add"
+                    placeholder="Search for your friends"
                     type="text"
                     name="term2"
                     value={this.state.term2}

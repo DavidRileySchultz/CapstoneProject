@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CapstoneProject.Models;
+using CapstoneProject.ViewModels;
+using CapstoneProject.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using CapstoneProject.Data;
-using CapstoneProject.Models;
 
 namespace CapstoneProject.Controllers
 {
@@ -15,112 +15,49 @@ namespace CapstoneProject.Controllers
     public class GroupsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-
         public GroupsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Groups
-        [HttpGet]
-        public IEnumerable<Group> GetGroups()
-        {
-            return _context.Groups;
-        }
-
-        // GET: api/Groups/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetGroup([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var @group = await _context.Groups.FindAsync(id);
-
-            if (@group == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(@group);
-        }
-
-        // PUT: api/Groups/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutGroup([FromRoute] int id, [FromBody] Group @group)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != @group.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(@group).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!GroupExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
 
         // POST: api/Groups
-        [HttpPost]
-        public async Task<IActionResult> PostGroup([FromBody] Group @group)
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Create([FromBody] GroupVM data)
         {
-            if (!ModelState.IsValid)
+            if (data != null)
             {
-                return BadRequest(ModelState);
+                try
+                {
+                    Group group = new Group();
+                    group.Name = data.name;
+                    group.GroupName = data.groupName;
+                    group.Id = data.groupId;
+                    _context.Groups.Add(group);
+                    await _context.SaveChangesAsync();
+                    int thisGroupId = FindGroupIdByName(data.name);
+                    return Ok();
+                }
+                catch
+                {
+                    throw new System.Web.Http.HttpResponseException(System.Net.HttpStatusCode.InternalServerError);
+                }
             }
-
-            _context.Groups.Add(@group);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetGroup", new { id = @group.Id }, @group);
+            else
+            {
+                return NoContent();
+            }
         }
 
-        // DELETE: api/Groups/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteGroup([FromRoute] int id)
+        private int FindGroupIdByName(string name)
         {
-            if (!ModelState.IsValid)
+            var thisGroup = _context.Groups.Where(a => a.Name == name).ToList();
+            if (thisGroup.Count() > 1)
             {
-                return BadRequest(ModelState);
+                thisGroup = thisGroup.OrderByDescending(a => a.Id).ToList();
             }
-
-            var @group = await _context.Groups.FindAsync(id);
-            if (@group == null)
-            {
-                return NotFound();
-            }
-
-            _context.Groups.Remove(@group);
-            await _context.SaveChangesAsync();
-
-            return Ok(@group);
-        }
-
-        private bool GroupExists(int id)
-        {
-            return _context.Groups.Any(e => e.Id == id);
+            int thisGroupId = thisGroup[0].Id;
+            return thisGroupId;
         }
     }
 }

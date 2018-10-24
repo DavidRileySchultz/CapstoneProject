@@ -5,13 +5,21 @@ using System.Threading.Tasks;
 
 namespace CapstoneProject.ViewModels
 {
-    public class GroupViewModel
+    public class GroupVM
     {
-        internal string groupName;
-
         public string name { get; set; }
-        public string description { get; set; }
+
+        public string groupName { get; set; }
+
         public int[] members { get; set; }
+
         public int userId { get; set; }
+
+        public string owner { get; set; }
+
+        public string[] travellerNames { get; set; }
+
+        public int groupId { get; set; }
+
     }
 }
