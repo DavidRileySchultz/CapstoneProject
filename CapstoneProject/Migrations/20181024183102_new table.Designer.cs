@@ -4,14 +4,16 @@ using CapstoneProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CapstoneProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181024183102_new table")]
+    partial class newtable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,7 +44,9 @@ namespace CapstoneProject.Migrations
 
                     b.Property<int>("GroupId");
 
-                    b.Property<int>("TravellerId");
+                    b.Property<int?>("TravellerId");
+
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
@@ -126,8 +130,7 @@ namespace CapstoneProject.Migrations
 
                     b.HasOne("CapstoneProject.Models.Traveller", "Traveller")
                         .WithMany()
-                        .HasForeignKey("TravellerId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("TravellerId");
                 });
 
             modelBuilder.Entity("CapstoneProject.Models.GroupTraveller", b =>
