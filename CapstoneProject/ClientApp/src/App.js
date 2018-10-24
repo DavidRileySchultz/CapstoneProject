@@ -4,8 +4,8 @@ import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { Register } from './components/_register/RegisterPage';
 import { Login } from './components/_login/LoginPage';
-import { UserHome } from './components/_user/UserHome';
-import { Logout } from './components/_login/Logout';
+import { TravellerHome } from './components/_traveller/TravellerHome';
+import { LogoutPage } from './components/_login/LogoutPage';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import { GroupContent } from './components/_traveller/GroupContent';
 
@@ -97,7 +97,7 @@ export default class App extends Component {
         var logout = null;
 
         if (this.state.tryLogout === true) {
-            logout = <Logout cancel={cancelLogout} clickLogOut={doLogout} />
+            logout = <LogoutPage cancel={cancelLogout} clickLogOut={doLogout} />
         }
 
         var login = null;
@@ -124,14 +124,10 @@ export default class App extends Component {
                 {register}
                 <Switch>
                     <Route exact path="/" component={Home} />                    
-                    <Route exact path='/users' component={UserHome} />
+                    <Route exact path='/users' component={TravellerHome} />
                     <Route exact path='/groups' component={GroupContent} />
                 </Switch>
             </Layout>
-
         );
     }
-
-
-
 }

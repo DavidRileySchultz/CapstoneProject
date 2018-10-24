@@ -4,10 +4,10 @@
 
 .navbar .navbar-nav .active a:focus,
 .navbar .navbar-nav .active a {
-    border-bottom: 5px solid purple;
-    background-color: white;
+    border-bottom: 5px solid orange;
+    background-color: orange;
     background-image: none;
-    color: purple;
+    color: deepskyblue;
     background-repeat: no-repeat;
     box-shadow: none;
 }
@@ -21,17 +21,17 @@ a {
 }
 
 a:hover {
-    color: hotpink;
+    color: cornflowerblue;
 }
 
 .navbar-default .navbar-nav > li > a:hover {
     background-color: white;
     background-image: none;
-    color: purple;
+    color: deepskyblue;
 }
 
 .corner-nav-buttons:hover {
-    background-color: purple;
+    background-color: cornflowerblue;
     background-image: none;
     color: white;
 }
@@ -83,16 +83,16 @@ a:hover {
 }
 
 .navbar-default .navbar-brand {
-    color: purple;
+    color: deepskyblue;
 }
 
     .navbar-default .navbar-brand:hover {
-        color: purple;
+        color: deepskyblue;
         background-color: none;
     }
 
 .navbar-default .navbar-nav > li > a {
-    color: purple;
+    color: deepskyblue;
     font-weight: 600;
 }
 
@@ -104,7 +104,7 @@ a:hover {
 
 .navbar-brand {
     text-shadow: none;
-    color: purple;
+    color: deepskyblue;
     font-weight: 600;
 }
 
@@ -159,8 +159,8 @@ button.list-group-item:hover {
 .btn-group-vertical > .btn:first-child:not(:last-child).active:focus,
 .btn-group-vertical > .btn:not(:first-child):not(:last-child).active:focus,
 .btn-group-vertical > .btn:last-child:not(:first-child).active:focus {
-    background-image: linear-gradient(to left, orange, hotpink);
-    background-color: hotpink;
+    background-image: linear-gradient(to left, orange, deepskyblue);
+    background-color: deepskyblue;
     padding: 6px 9px;
     color: white;
     text-decoration: none;
@@ -178,50 +178,50 @@ button.list-group-item:hover {
     border-radius: 15px;
     padding: 3px 6px;
     background-image: none;
-    background-color: purple;
-    border: 3px solid hotpink;
+    background-color: deepskyblue;
+    border: 3px solid orange;
     color: white;
     text-shadow: none;
 }
 
 .btn-default.active {
-    background-image: linear-gradient(to bottom right, orange, hotpink);
+    background-image: linear-gradient(to bottom right, orange, deepskyblue);
     border: none;
 }
 
     .btn-default.active,
     .btn-default.active:focus {
-        background-color: hotpink;
+        background-color: orange;
         box-shadow: none;
         color: white;
         padding: 6px 9px;
     }
 
 .btn-default:hover {
-    background-color: hotpink;
+    background-color: orange;
     box-shadow: none;
     color: white;
     padding: 4px 7px;
-    border-color: hotpink;
+    border-color: orange;
 }
 
 .btn-default.active:hover {
-    background-color: hotpink;
+    background-color: orange;
     box-shadow: none;
     color: white;
     padding: 6px 9px;
-    border-color: hotpink;
+    border-color: orange;
 }
 
 .btn .btn-primary .active {
-    background-image: linear-gradient(to bottom right, orange, hotpink) !important;
+    background-image: linear-gradient(to bottom right, orange, deepskyblue) !important;
 }
 
 .normal-buttons {
     text-shadow: none;
-    background-color: purple;
+    background-color: orange;
     color: white;
-    border: 2px solid hotpink;
+    border: 2px solid orange;
     padding: 4px 7px;
 }
 
@@ -275,7 +275,7 @@ button.list-group-item:hover {
 }
 
 .corner-nav-buttons {
-    background-image: linear-gradient(to top right, orange, hotpink);
+    background-image: linear-gradient(to top right, orange, deepskyblue);
     border-radius: 15px;
     padding: 5px 10px 5px 10px;
     color: white;
@@ -287,8 +287,8 @@ button.list-group-item:hover {
     border-radius: 0px;
     border-radius: 15px;
     background-image: none;
-    background-color: purple;
-    border: 1px solid hotpink;
+    background-color: orange;
+    border: 1px solid orange;
     color: white;
     text-shadow: none;
 }
@@ -299,8 +299,8 @@ button.list-group-item:hover {
     border-radius: 0px;
     border-radius: 15px;
     background-image: none;
-    background-color: purple;
-    border: 1px solid hotpink;
+    background-color: deepskyblue;
+    border: 1px solid orange;
     color: white;
     text-shadow: none;
 }
@@ -311,15 +311,15 @@ button.list-group-item:hover {
 
 .action-button {
     width: 100%;
-    background-image: linear-gradient(to top right, orange, hotpink);
+    background-image: linear-gradient(to top right, orange, deepskyblue);
     color: white;
 }
 
     .action-button:hover {
         background-image: none;
-        background-color: purple;
+        background-color: deepskyblue;
         padding: 3px 9px;
-        border: 3px solid hotpink;
+        border: 3px solid orange;
         color: white;
     }
 
@@ -329,8 +329,8 @@ button.list-group-item:hover {
 
 .btn.btn-primary {
     background-image: none;
-    background-color: purple;
-    border: 1px solid hotpink;
+    background-color: orange;
+    border: 1px solid orange;
     color: white;
 }
 
@@ -384,7 +384,7 @@ button.list-group-item:hover {
 
 .comment-icon {
     font-size: 30px;
-    color: hotpink;
+    color: orange;
 }
 
 .comment-icon-active {
@@ -418,7 +418,7 @@ button.list-group-item:hover {
 }
 
 .minus-icon {
-    color: hotpink !important;
+    color: orange !important;
     font-size: 30px;
     left: 80%;
 }
@@ -526,7 +526,7 @@ input, input:focus {
 }
 
 .react-datepicker__day--selected {
-    background-color: purple !important;
+    background-color: deepskyblue !important;
 }
 
 .bottom-buttons {
@@ -538,7 +538,7 @@ input, input:focus {
 
 
 .react-datepicker {
-    border: 1px solid hotpink !important;
+    border: 1px solid orange !important;
 }
 
 .react-datepicker-wrapper {
@@ -546,16 +546,16 @@ input, input:focus {
 }
 
 .react-datepicker__header {
-    background-image: linear-gradient(to bottom right, orange, hotpink) !important;
+    background-image: linear-gradient(to bottom right, orange, deepskyblue) !important;
     border-bottom: none !important;
 }
 
 .react-datepicker__navigation--previous {
-    border-right-color: purple !important;
+    border-right-color: deepskyblue !important;
 }
 
 .react-datepicker__navigation--next {
-    border-left-color: purple !important;
+    border-left-color: deepskyblue !important;
 }
 
 

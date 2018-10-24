@@ -40,7 +40,7 @@ export class GroupContent extends Component {
             return (
                 <div>
                     <Button onClick={(event) => this.addNewGroup(event)}>Create a Group</Button>
-                    <div> Your Groups </div>
+                    <div> Travel Groups: </div>
                 </div>
             );
         }

@@ -66,7 +66,7 @@ namespace CapstoneProject.Controllers
             }
         }
 
-        private LoggedInTravellerViewModel GetUserInfoFromUser(Traveller traveller)
+        private LoggedInTravellerViewModel GetUserInfoFromTraveller(Traveller traveller)
         {
             LoggedInTravellerViewModel viewModel = new LoggedInTravellerViewModel();
             viewModel.first_name = traveller.FirstName;
@@ -77,8 +77,8 @@ namespace CapstoneProject.Controllers
 
         private LoggedInTravellerViewModel GetUserInfoFromEmail(string email)
         {
-            var user = _context.Travellers.FirstOrDefault(e => e.Email == email);
-            return GetUserInfoFromUser(user);
+            var traveller = _context.Travellers.FirstOrDefault(e => e.Email == email);
+            return GetUserInfoFromTraveller(traveller);
         }
 
         // POST: api/Users
@@ -118,16 +118,74 @@ namespace CapstoneProject.Controllers
             }
         }
 
-        // PUT: api/Users/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        private IEnumerable<Traveller> SearchByName(string first_name = null, string last_name = null)
         {
+            IEnumerable<Traveller> firstNameMatches;
+
+            IEnumerable<Traveller> matches;
+
+
+            if (first_name != null)
+            {
+                firstNameMatches = _context.Travellers.Where(a => a.FirstName.ToLower().Trim() == first_name.ToLower().Trim());
+                if (last_name != null)
+                {
+                    matches = firstNameMatches.Where(a => a.LastName.ToLower().Trim() == last_name.ToLower().Trim());
+                }
+                else
+                {
+                    matches = firstNameMatches;
+                }
+            }
+            else if (last_name != null)
+            {
+                matches = _context.Travellers.Where(a => a.LastName.ToLower().Trim() == last_name.ToLower().Trim());
+            }
+            else
+            {
+                return null;
+            }
+            return matches;
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        private List<SearchTravellerViewModel> GetSearchMatches(IEnumerable<Traveller> matches)
         {
+            List<SearchTravellerViewModel> searchResults = new List<SearchTravellerViewModel> { };
+            foreach (Traveller match in matches)
+            {
+                SearchTravellerViewModel searchResult = new SearchTravellerViewModel();
+                searchResult.name = $"{match.FirstName} {match.LastName}";
+                searchResult.Id = match.Id;
+                searchResults.Add(searchResult);
+            }
+            return searchResults;
+        }
+
+        [HttpGet("[action]")]
+        public IEnumerable<SearchTravellerViewModel> SearchUsersByName(string first_name = null, string last_name = null)
+        {
+            IEnumerable<Traveller> matches = SearchByName(first_name, last_name);
+            return GetSearchMatches(matches);
+        }
+
+        [HttpGet("[action]")]
+        public IEnumerable<SearchTravellerViewModel> UniversalUserSearch(string term1)
+        {
+            if (term1 == null)
+            {
+                return null;
+            }
+            string[] terms = term1.Split(' ');
+            List<Traveller> matches = new List<Traveller> { };
+            foreach (String item in terms)
+            {
+                var nameMatches = _context.Travellers.Where(a =>
+                    $"{a.FirstName.ToLower()} {a.LastName.ToLower()}".Contains(item));
+                matches.AddRange(nameMatches);
+            }
+            matches = matches.Distinct().ToList();
+
+            return GetSearchMatches(matches);
         }
     }
 }

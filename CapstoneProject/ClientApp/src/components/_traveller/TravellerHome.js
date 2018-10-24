@@ -2,12 +2,11 @@
 import { Button, ButtonGroup, Form, FormGroup, FormControl, ControlLabel, Col, Row, Alert } from 'react-bootstrap';
 import { Route, withRouter } from 'react-router-dom';
 import { NavMenu } from '../NavMenu';
-import { UserHomeContent } from './UserHomeContent';
+import { HomeContent } from './HomeContent';
 import { GroupContent } from './GroupContent';
-import { GroupEvent } from './GroupEvent';
 
 
-export class Home extends Component {
+export class TravellerHome extends Component {
 
     constructor(props) {
         super(props);
@@ -15,20 +14,6 @@ export class Home extends Component {
             shouldGoTo: 'Home'
         }
         this.goToGroups = this.goToGroups.bind(this);
-    }
-
-    componentDidMount() {
-        if (this.props.location.search !== "") {
-            var stravaParams = this.props.location.search.split('&');
-            let code = stravaParams[1].slice(5);
-            let id = localStorage.getItem('userId');
-            let data = { auth_code: code, id: id };
-            fetch('api/Users/SendCodeToStrava', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            })
-        }
     }
 
     goToHome(event) {
@@ -49,10 +34,10 @@ export class Home extends Component {
         const goToPage = this.state.shouldGoTo;
         let content;
         if (goToPage === 'Home') {
-            content = <UserHomeContent />
+            content = <HomeContent />
         }
         else if (goToPage === 'Groups') {
-            content = <UserGroupContent />
+            content = <GroupContent />
         }
         return (
             <div>
@@ -67,6 +52,5 @@ export class Home extends Component {
                 </div>
             </div>
         );
-
     }
 }

@@ -4,7 +4,7 @@ import { Route, Link, Redirect, withRouter, BrowserRouter } from 'react-router-d
 import { MemberListItem } from './MemberListItem';
 
 
-export class MemberList extends Component {
+export class Members extends Component {
     constructor(props) {
         super(props);
     }

@@ -35,7 +35,7 @@ export class Register extends Component {
             var resultId = null;
             const data = { first_name: this.state.first_name, last_name: this.state.last_name, password: this.state.password, email: this.state.email };
             event.preventDefault();
-            await fetch('api/Users/Create', {
+            await fetch('api/Travellers/Create', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)

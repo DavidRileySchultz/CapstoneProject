@@ -104,6 +104,7 @@ export class Login extends Component {
                     <Col md={4} mdOffset={4} className="text-center">
                         <h1 className="page-title"> Log in </h1> </Col>
                 </Row>
+                <center><h2> Your Adventure Awaits! </h2></center>
                 <Row className="empty-space10percent">
                     <Col md={4} mdOffset={4}>
                         <div hidden={!this.shouldShowErrorMessage()}>

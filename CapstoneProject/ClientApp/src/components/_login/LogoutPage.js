@@ -2,7 +2,7 @@
 import { Button, Modal } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 
-export class Logout extends Component {
+export class LogoutPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -39,5 +39,4 @@ export class Logout extends Component {
             </div>
         );
     }
-
 }

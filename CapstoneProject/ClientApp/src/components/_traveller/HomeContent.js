@@ -1,15 +1,22 @@
 ﻿import React, { Component } from 'react';
-import { Button, Form, FormGroup, FormControl, ControlLabel, Col, Row, ButtonToolbar } from 'react-bootstrap';
-import { Route, Link, Redirect, withRouter, BrowserRouter } from 'react-router-dom';
+import image from './TravellerImages/Travel.jpg'
 
 export class HomeContent extends Component {
     constructor(props) {
         super(props);
-    }
+    }  
 
     render() {
+        const background = {
+            height: "89vh",
+            backgroundImage: `url(${image}`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat"
+        }
+
         return (
-            <div> Home Content </div>
+            <div style={background}></div>
         );
     }
 }
