@@ -1,7 +1,5 @@
 ﻿import React, { Component } from 'react';
-import { Button, ButtonGroup, Form, FormGroup, FormControl, ControlLabel, Col, Row, Alert } from 'react-bootstrap';
-import { Route, withRouter } from 'react-router-dom';
-import { NavMenu } from '../NavMenu';
+import { Button, ButtonGroup } from 'react-bootstrap';
 import { HomeContent } from './HomeContent';
 import { GroupContent } from './GroupContent';
 

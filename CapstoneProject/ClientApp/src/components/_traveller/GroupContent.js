@@ -1,6 +1,5 @@
 ﻿import React, { Component } from 'react';
-import { Button, Form, FormGroup, FormControl, ControlLabel, Col, Row, ButtonToolbar } from 'react-bootstrap';
-import { Route, Link, Redirect, withRouter, BrowserRouter } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import { CreateGroup } from './CreateGroup';
 
 export class GroupContent extends Component {

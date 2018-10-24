@@ -1,7 +1,5 @@
 ﻿import React, { Component } from 'react';
-import { Button, Form, FormGroup, FormControl, ControlLabel, Col, ListGroupItem, ListGroup, ColProps, Row, Alert } from 'react-bootstrap';
-import { Route, Link, Redirect, withRouter, BrowserRouter } from 'react-router-dom';
-import { NavMenu } from '../NavMenu';
+import { Form, FormGroup, FormControl, Col, ListGroupItem, ListGroup, Row, Alert } from 'react-bootstrap';
 import { SearchMembers } from './_groups/SearchMembers';
 import { Members } from './_groups/Members';
 import _ from 'lodash';

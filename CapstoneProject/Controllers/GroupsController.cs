@@ -59,5 +59,31 @@ namespace CapstoneProject.Controllers
             int thisGroupId = thisGroup[0].Id;
             return thisGroupId;
         }
+
+        [HttpGet("[action]")]
+        public MyGroupsViewModels GetGroups(int id)
+        {
+            var groups = GetGroupsByUserId(id);
+            List<MyGroupsViewModel> groupsIn = CreateGroupsInSnapshotForClient(groups);
+            List<MyGroupsViewModel> ownGroups = GetGroupsOwned(id);
+            MyGroupsViewModels all = new MyGroupsViewModels();
+            all.groupsIn = groupsIn;
+            all.groupsOwn = ownGroups;
+            return all;
+        }
+
+        public List<MyGroupsViewModel> GetGroupsOwned(int id)
+        {
+            var groups = _context.Groups.Where(a => a.Id == id).ToList();
+            List<MyGroupsViewModel> snapshots = new List<MyGroupsViewModel>();
+            foreach (Group group in groups)
+            {
+                MyGroupsViewModel snapshot = new MyGroupsViewModel();
+                snapshot.Id = group.Id;
+                snapshot.Name = group.Name;
+                snapshots.Add(snapshot);
+            }
+            return snapshots;
+        }
     }
 }
